@@ -26,8 +26,8 @@ for word in str:
 
 values = my_dict.values()
 best = max(values)
-words = []
+common_words = []
 for k in my_dict:
     if my_dict[k] == best:
-        words.append(k)
-print (words)
+        common_words.append(k)
+print (common_words)
