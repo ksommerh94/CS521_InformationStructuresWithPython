@@ -138,7 +138,7 @@ def cmd_n(x, cur, target):
 
 #write your representation as text file and save it
 def cmd_wq(x,cur):
-    f = open("wq_hw6.txt", "r+")
+    f = open("wq_hw6.txt", "a")
     f.truncate(0)
     f.write(x[:cur] + '^' + x[cur:])
     f.close()
