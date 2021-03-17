@@ -197,9 +197,6 @@ line_id =1 ; delta = 2
 
 print_file_list(x_list, line_id, delta)
 
-print('cmd_H:')
-x_list, line_id, delta = cmd_H(x_list, line_id, delta)
-print_file_list(x_list, line_id, delta)
 
 
 

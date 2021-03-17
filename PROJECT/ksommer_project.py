@@ -1,5 +1,5 @@
-from c_experience import Experience
-
+from c_place import Place
+from c_main_place import Mainplace
 
 def read_fill(dict_city):
     '''
@@ -13,26 +13,32 @@ def read_fill(dict_city):
         #Read text file
         f = open("input_text.csv", "r")
         f_read=f.readlines()
-
         for f in (f_read):
-            read_text.append(f.split(','))
+            read_text.append(f.split(';'))
+
+        #keep record of the main Place
+        mainp=Null
         for index,texto in enumerate(read_text):
-            list_exp=[]
-            # validate to add to dictionary
-            if texto[0] not in dict_city.keys():
-                #create object Experience and add to list
-                exp=Experience(texto[1],texto[2],texto[3].replace("\n", ""))
-                list_exp.append(exp)
-                #add list as value of the dictionary
-                dict_city[texto[0]]=list_exp
+            if index==0:
+                emp=[]
+                mp=Mainplace(texto[0],texto[1],texto[2],texto[3],texto[6],texto[4],texto[5],emp)
+                #save the main place in 'big' variable
+                mainp=mp
             else:
-                #create object Experience and add to existed list
-                exp=Experience(texto[1],texto[2],texto[3].replace("\n", ""))
-                dict_city[texto[0]].append(exp)
+                list_days=[]
+                for i in range(8,len(texto)-1):
+                    list_days.append(texto[i])
+                #create the place and list of days to the place
+                p=Place(texto[1],texto[2],texto[3],texto[4],texto[5],texto[6],texto[7],list_days)
+                # add the place to the main place , make the connection
+                mainp.__place.append(p)
+
+
+
     except:
         pass
 
-    return dict_city
+    return mainp
 
 if __name__ == "__main__":
     try:

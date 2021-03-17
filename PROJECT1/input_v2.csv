@@ -1,0 +1,21 @@
+Pais,Ciudad,Name,Service,Location,Cleanliness,Value,Breakfast_incl,Price
+Colombia,Bogota,Grand Hyatt Bogota,5,4,5,5,f,130
+Colombia,Bogota,Four Seasons Hotel Casa Medina Bogota,4,5,5,4,t,208
+Colombia,Medellin,Hotel Poblado Plaza,5,5,4,4,f,89
+Colombia,Medellin,Marriott Medellin,4,4,5,3,f,135
+Colombia,Santa Marta,Irotama,5,4,5,4,t,140
+Colombia,Santa Marta,Zuana,4,4,5,4,t,130
+Colombia,Cartagena,Sofitel Legend Santa Clara,5,5,5,4,t,260
+Colombia,Cartagena,Hotel Casa San Agustin,5,5,5,5,t,250
+Colombia,Cartagena,Hotel Quadrifolio,4,5,5,4,t,200
+Costa Rica,Jaco,Croc's Resort & Casino,3,4,4,3,t,150
+Costa Rica,Jaco,DoceLunas Hotel Restaurant & Spa,4,5,5,5,t,120
+Costa Rica,Paquera,Vista las islas,5,5,5,5,t,100
+Costa Rica,Paquera,Bahia Rica Fishing and Kayak Lodge,5,3,5,4,t,80
+Costa Rica,Santa Teresa,Pranamar Villas and Yoga Retreat,5,5,5,3,f,270
+Costa Rica,Santa Teresa,Fuego Lodge,5,5,5,5,t,130
+Mexico,Ciudad de Mexico,Four Seasons Hotel Mexico City,5,5,5,4,f,295
+Mexico,Ciudad de Mexico,Zocalo Central,4,5,4,4,t,105
+Mexico,Ciudad de Mexico,JW Marriot CDMX,5,5,5,5,t,200
+Mexico,Cancun,Hyatt Ziva Cancun,4,5,5,3,t,352
+Mexico,Cancun,Live Aqua Beach Resort Cancun,5,3,4,4,t,340
