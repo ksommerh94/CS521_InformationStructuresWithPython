@@ -6,6 +6,7 @@ Dictionary country
 
 '''
 from c_hotel import Hotel
+
 HOTELINFO_FILENAME = "input_v2.csv"
 
 def load_hotels(HOTELINFO_FILENAME):
@@ -67,10 +68,30 @@ def load_hotels(HOTELINFO_FILENAME):
 
     return country
 
+def print_menu(flag,country):
+    if flag==1:
+        s="Please set the country you want to check from the list below:"
+    elif flag==2:
+        s="List of hotels are:"
+    for i in country.keys():
+        s+='\n'
+        s+=i
+    s+='\n'
+    return(s)
+
+def find_hotels(flag,country):
+    dic_
+    print('sss')
+
+
+
+
 if __name__ == "__main__":
     try:
+        flag=1
         country=load_hotels(HOTELINFO_FILENAME)
-        print(country)
+        r=print_menu(flag,country)
+        search_country = (input(r))
 
         #find hotels of city
 
