@@ -1,3 +1,4 @@
+import copy
 class Hotel():
 
     #contructor of experience class
@@ -17,7 +18,8 @@ class Hotel():
     def __repr__(self):
         #print important information
         return repr('Name Place: '+self.name)
-
+    def __copy__(self):
+        return Hotel(self)
 #PUBLIC METHOD
     def avg_ranks(self):
         '''
@@ -27,6 +29,9 @@ class Hotel():
         '''
         return ((self.service+self.location+self.cleanliness+self.value)/4)
 
+    def print_all(self):
+        return ('Name Place: '+self.name +'\n' +'Service points: '+str(self.service) +'\n'+'Location points: '+str(self.location) +'\n'\
+        +'Cleanliness points: '+str(self.cleanliness) +'\n' +'Service Value: '+str(self.value) +'\n')
 #PRIVATE METHOD
     def __price_discount(self,code_discount):
         '''
