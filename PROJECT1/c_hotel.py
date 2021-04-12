@@ -13,11 +13,10 @@ class Hotel():
         #Private attributes
         self.__price=price
 
-
     # printable representation of the experience object
-    def __repr__(self):
-        #print important information
-        return repr('Name Place: '+self.name)
+    def __str__(self):
+        return 'The hotel'+self.name
+
     def __copy__(self):
         return Hotel(self)
 #PUBLIC METHOD
@@ -39,13 +38,12 @@ class Hotel():
         Input: The input code for check which discount should be applied
         Output: The price with the discount applied and a flag( if a the input code existed or not)
         '''
-
         flag=True
-        if code_discount.lower()=='VACATIONS10':
+        if code_discount.UPPER()=='VACATIONS10':
             disc=self.price*(0,1)
-        elif code_discount.lower()=='TRAVEL50':
+        elif code_discount.UPPER()=='TRAVEL50':
             disc=self.price*(0,5)
-        elif code_discount.lower()=='2020WORLD':
+        elif code_discount.UPPER()=='2021WORLD':
             disc=self.price*(0,2)
         else:
             disc=0

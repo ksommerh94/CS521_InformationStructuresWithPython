@@ -85,11 +85,11 @@ def print_select_country(country):
         print(s)
         search_country = (input('Enter selected country:'))
         for i in country.keys():
-            if search_country.lower() == i.lower():
+            if search_country.upper() == i.upper():
                 while_flag=False
         if while_flag==True:
             print('Country not found!')
-    return(search_country.lower())
+    return(search_country.upper())
 
 def represents_int(s):
     '''
@@ -107,40 +107,71 @@ def find_cities(c,country):
     '''
     Method: gives the option to the user to select an avaiable city and to view the hotels
     Input: the country selected , and the dictirionary of countries
-    Output: None
+    Output: cities from the specific country
     '''
-    cities=country[c.capitalize()]
-    #print(country[c.capitalize()])
-    s="These are the cities in "+ c.capitalize()
+    cities=country[c.upper()]
+    #print(country[c.upper()])
+    s="These are the cities in "+ c.upper()
     for i in cities.keys():
         s+='\n'
         s+=i
-    #s+='\n'
     print(s)
-    ans = (input('Do you want to check the hotels of one specific city? Y/N'))
-    print(ans)
-    if ans.lower()=='n':
-        return
-    elif ans.lower()=='y':
-        while_flag=True
-        while while_flag:
-            search_city = (input('Enter selected city:'))
-            if search_city.capitalize() in cities.keys():
-                lhotels=cities[search_city.capitalize()]
-                table = Texttable()
-                table.header(['Hotel','Service','Location','Cleanliness','Value','Breakfast'])
-                for h in lhotels:
-                    b='No'
-                    if h.breakfast==True:
-                        b='Yes'
-                    table.add_row([h.name,h.service, h.location,h.cleanliness,h.value,b])
-                print(table.draw())
-                while_flag=False
-            else:
-                print('City entered not found!')
-    else:
-        print('Error in the selected option')
+    flag_break_while=True
+    while(flag_break_while):
+        ans = (input('Do you want to check the hotels of one specific city? Y/N'))
+        search_city=''
+        print(ans.upper())
+        if ans.upper()=='N':
+            flag_break_while=False
+            return (cities,search_city,False)
+        elif ans.upper()=='Y':
+            search_city = (input('Enter selected city from the list above:'))
+            flag_break_while=False
+            return (cities,search_city,True)
+        else:
+            print('Error in the selected option')
 
+def extra_hotels_per_city(search_city,cities):
+    '''
+    Method: prints all hotel from a city
+    Input: the target city (search_city) and the city dictionary (cities)
+    Output: None
+    '''
+    while_flag=True
+    while while_flag:
+        if search_city.upper() in cities.keys():
+            lhotels=cities[search_city.upper()]
+            table = Texttable()
+            table.header(['Hotel','Service','Location','Cleanliness','Value','Breakfast'])
+            for h in lhotels:
+                b='No'
+                if h.breakfast==True:
+                    b='Yes'
+                table.add_row([h.name,h.service, h.location,h.cleanliness,h.value,b])
+            print(table.draw())
+            while_flag=False
+        else:
+            print('City entered not found!')
+
+def view_hotels(c,country):
+    '''
+    Method: Print all the hotel of a country
+    Input: the country selected c , and the dictirionary of countries county
+    Output: None
+    '''
+    cities=country[c.upper()]
+    #print(cities)
+    for loop_cities in cities.keys():
+        print(loop_cities)
+        lhotels=cities[loop_cities.upper()]
+        table = Texttable()
+        table.header(['Hotel','Service','Location','Cleanliness','Value','Breakfast'])
+        for h in lhotels:
+            b='No'
+            if h.breakfast==True:
+                b='Yes'
+            table.add_row([h.name,h.service, h.location,h.cleanliness,h.value,b])
+        print(table.draw())
 
 
 if __name__ == "__main__":
@@ -152,12 +183,12 @@ if __name__ == "__main__":
         c=print_select_country(country)
         flag=True
         while flag:
-            print("Now we can see hotel's information from "+ c.capitalize())
+            print("Now we can see hotel's information from "+ c.upper())
             print('''Select the number of the following options:
                     1) View all cities
                     2) View all hotels
                     3) Rank hotel
-                    4) See best ranked
+                    4) See top 10 best ranked selected country
                     5) Check price with promo codes
                     6) Change Country
                     7) Exit''')
@@ -172,9 +203,14 @@ if __name__ == "__main__":
                 elif option==6:
                     r=print_select_country(country)
                 elif option==1:
-                    find_cities(c,country)
+                    cities,search_city,selected_option=find_cities(c,country)
+                    if selected_option==True:
+                        extra_hotels_per_city(search_city,cities)
                 elif option==2:
                     view_hotels(c,country)
+                elif option==3:
+                    cities,search_city,selected_option=find_cities(c,country)
+                    #view_hotels(c,country)
 
             else:
                 print('Option not valid')
