@@ -1,21 +1,31 @@
-Pais,Ciudad,Name,Service,Location,Cleanliness,Value,Breakfast_incl,Price
-COLOMBIA,BOGOTA,Grand Hyatt Bogota,5,4,5,5,f,130
-COLOMBIA,BOGOTA,Four Seasons Hotel Casa Medina Bogota,4,5,5,4,t,208
-COLOMBIA,MEDELLIN,Hotel Poblado Plaza,5,5,4,4,f,89
-COLOMBIA,MEDELLIN,Marriott MEDELLIN,4,4,5,3,f,135
-COLOMBIA,SANTA MARTA,Irotama,5,4,5,4,t,140
-COLOMBIA,SANTA MARTA,Zuana,4,4,5,4,t,130
-COLOMBIA,CARTAGENA,Sofitel Legend Santa Clara,5,5,5,4,t,260
+Country,City,Name,Service,Location,Cleanliness,Value,Breakfast_incl,Price
+COLOMBIA,BOGOTA,Grand Hyatt Bogota,5.0,4.3,4.9,4.2,f,130
+COLOMBIA,BOGOTA,Four Seasons Hotel Casa Medina Bogota,4.1,5.0,4.9,4.7,t,208
+COLOMBIA,MEDELLIN,Hotel Poblado Plaza,3.1,4.2,5,4.8,f,89
+COLOMBIA,MEDELLIN,Marriott Medellin,4.2,4.6,5,4.3,f,135
+COLOMBIA,SANTA MARTA,Irotama,5,4,4.7,4.2,t,140
+COLOMBIA,SANTA MARTA,Zuana,4.3,4.4,5,4.5,t,130
+COLOMBIA,CARTAGENA,Sofitel Legend Santa Clara,5,5,5,4.2,t,260
 COLOMBIA,CARTAGENA,Hotel Casa San Agustin,5,5,5,5,t,250
-COLOMBIA,CARTAGENA,Hotel Quadrifolio,4,5,5,4,t,200
-COSTA RICA,JACO,Croc's Resort & Casino,3,4,4,3,t,150
-COSTA RICA,JACO,DoceLunas Hotel Restaurant & Spa,4,5,5,5,t,120
+COLOMBIA,CARTAGENA,Hotel Quadrifolio,4.3,5,5,4.4,t,200
+COSTA RICA,JACO,Croc's Resort & Casino,3.4,4.5,4.6,3.6,t,150
+COSTA RICA,JACO,DoceLunas Hotel Restaurant & Spa,4.3,5,5,5,t,120
 COSTA RICA,PAQUERA,Vista las islas,5,5,5,5,t,100
-COSTA RICA,PAQUERA,Bahia Rica Fishing and Kayak Lodge,5,3,5,4,t,80
-COSTA RICA,SANTA TERESA,Pranamar Villas and Yoga Retreat,5,5,5,3,f,270
+COSTA RICA,PAQUERA,Bahia Rica Fishing and Kayak Lodge,5,3.5,5,4.6,t,80
+COSTA RICA,SANTA TERESA,Pranamar Villas and Yoga Retreat,5,5,5,3.3,f,270
 COSTA RICA,SANTA TERESA,Fuego Lodge,5,5,5,5,t,130
-MEXICO,CIUDAD DE MEXICO,Four Seasons Hotel Mexico City,5,5,5,4,f,295
-MEXICO,CIUDAD DE MEXICO,Zocalo Central,4,5,4,4,t,105
+MEXICO,CIUDAD DE MEXICO,Four Seasons Hotel Mexico City,5,5,5,4.5,f,295
+MEXICO,CIUDAD DE MEXICO,Zocalo Central,4.5,5,4.7,4.8,t,105
 MEXICO,CIUDAD DE MEXICO,JW Marriot CDMX,5,5,5,5,t,200
-MEXICO,CANCUN,Hyatt Ziva Cancun,4,5,5,3,t,352
-MEXICO,CANCUN,Live Aqua Beach Resort Cancun,5,3,4,4,t,340
+MEXICO,CANCUN,Hyatt Ziva Cancun,4.3,5,5,3.4,t,352
+MEXICO,CANCUN,Live Aqua Beach Resort Cancun,5,3.5,4.5,4,t,340
+MEXICO,PUERTO VALLARTA,Now Amber Puerto Vallarta Resort & Spa,4.3,4.6,4.7,4.4,f,396
+MEXICO,PUERTO VALLARTA,Fiesta Inn Puerto Vallarta Isla,3.4,3.5,4,3.8,f,60
+MEXICO,PUERTO VALLARTA,Grand Miramar,4.2,4.5,4,4.4,t,123
+PERU,LIMA,Hyatt Centric San Isidro Lima,5,4.7,5,4.7,t,204
+PERU,LIMA,Radisson Red Miraflores,4,5,4.6,4,t,85
+PERU,LIMA,Hilton Lima Miraflores,4.4,5,3.8,4.7,f,200
+PERU,LIMA,JW Marriott Hotel Lima,4.2,4.1,4,4.3,t,198
+PERU,CUSCO,Palacio del Inka,4.8,5,5,5,f,183
+PERU,CUSCO,Jw Marriott El Convento Cusco,4.6,4.8,4.5,4.6,f,186
+PERU,CUSCO,Aranwa Cusco Boutique Hotel,5,4,4.5,4.6,t,130
