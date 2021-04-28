@@ -1,16 +1,9 @@
-
-'''
-Dictionary country
-        as key -->  country , as value --> dictionary of cities
-                                                as key -->  city , as value --> list of hotels
-
-'''
 from c_hotel import Hotel
 from texttable import Texttable
 
 HOTELINFO_FILENAME = "input_v2.csv"
 
-def load_hotels(HOTELINFO_FILENAME):
+def load_hotels():
     '''
     Method: Read text file and fill country dictionary with the nested dictionary and list
     Input: nothing
@@ -19,55 +12,55 @@ def load_hotels(HOTELINFO_FILENAME):
     try:
         read_text=[]
         #Read text file
-        f = open(HOTELINFO_FILENAME, "r")
-        f_read=f.readlines()
-        for f in (f_read):
-            read_text.append(f.split(','))
-
-        country={}
-        for index,texto in enumerate(read_text):
-            if index!=0:
-                # Get information from text file
-
-                pais=texto[0]
-                ciudad=texto[1]
-                # Hotel infromation from text file
-                name=texto[2]
-                service=int(texto[3])
-                location=int(texto[4])
-                cleanliness=int(texto[5])
-                value=int(texto[6])
-                breakfast=False
-                if texto[7]=='t':
-                    breakfast=True
-                price=int(texto[8])
-
-                if pais not in country.keys():
-                    city={}
-                    list_hotel=[]
-                    # create hotel
-                    hotel=Hotel(name,service,location,cleanliness,value,breakfast,price)
-                    list_hotel.append(hotel)
-                    # add hotel list to city
-                    city[ciudad]=list_hotel
-                    # add city  to country
-                    country[pais]=city
-                else:
-                    if ciudad not in country[pais].keys():
+        with open(HOTELINFO_FILENAME, "r") as f:
+            f_read=f.readlines()
+            for f in (f_read):
+                read_text.append(f.split(','))
+            country={}
+            for index,texto in enumerate(read_text):
+                if index!=0:
+                    # Get information from text file
+                    pais=texto[0]
+                    #print(pais)
+                    ciudad=texto[1]
+                    # Hotel infromation from text file
+                    name=texto[2]
+                    service=float(texto[3])
+                    location=float(texto[4])
+                    cleanliness=float(texto[5])
+                    value=float(texto[6])
+                    breakfast=False
+                    if texto[7]=='t':
+                        breakfast=True
+                    price=int(texto[8])
+                    if pais not in country.keys():
+                        #print('paisno en country keys ')
+                        city={}
                         list_hotel=[]
                         # create hotel
                         hotel=Hotel(name,service,location,cleanliness,value,breakfast,price)
                         list_hotel.append(hotel)
                         # add hotel list to city
                         city[ciudad]=list_hotel
+                        # add city  to country
+                        country[pais]=city
                     else:
-                        #add hotel to city list
-                        hotel=Hotel(name,service,location,cleanliness,value,breakfast,price)
-                        city[ciudad].append(hotel)
-    except:
+                        if ciudad not in country[pais].keys():
+                            list_hotel=[]
+                            # create hotel
+                            hotel=Hotel(name,service,location,cleanliness,value,breakfast,price)
+                            list_hotel.append(hotel)
+                            # add hotel list to city
+                            city[ciudad]=list_hotel
+                        else:
+                            #add hotel to city list
+                            hotel=Hotel(name,service,location,cleanliness,value,breakfast,price)
+                            city[ciudad].append(hotel)
+            return country
+    except IOError as exc:
         pass
 
-    return country
+
 
 def print_select_country(country):
     '''
@@ -89,7 +82,7 @@ def print_select_country(country):
                 while_flag=False
         if while_flag==True:
             print('Country not found!')
-    print(search_country)
+    #print(search_country)
     return(search_country.upper())
 
 def represents_int(s):
@@ -139,11 +132,12 @@ def view_hotels(c,country):
         lhotels=cities[loop_cities.upper()]
         table = Texttable()
         table.header(['Hotel','Service','Location','Cleanliness','Value','Breakfast'])
+        table.set_cols_dtype(['t','t','t','t','t','t'])
         for h in lhotels:
             b='No'
             if h.breakfast==True:
                 b='Yes'
-            table.add_row([h.name,h.service, h.location,h.cleanliness,h.value,b])
+            table.add_row([h.name, h.service, h.location,h.cleanliness,h.value,b])
         print(table.draw())
 
 def view_citites(c,country):
@@ -161,20 +155,29 @@ def view_citites(c,country):
     print(s)
 
 def select_hotel(hotels,search_city):
+    '''
+    Method: prints mini menu for the hotel
+    Input: the list of hotels and the selected city
+    Output: None
+    '''
     outter_flag=True
+    #while for entering number of hotel
     while outter_flag:
-        s="These are the hotels in "+ search_city.upper()
+        print("\nThese are the hotels in "+ search_city.upper())
         cities=country[c.upper()]
         for count, hotel in enumerate(hotels):
             print('No.'+ str(count+1) + ' : ' + hotel.name  )
-        selected_idhotel = int(input('Enter the number of the Hotel or 0(zero) for exit'))
-        #print(len(hotels))
+        selected_idhotel = int(input('\nEnter the number of the Hotel or 0(zero) for exit'))
+        #check if the id exists or if wants to exit
         if selected_idhotel==0:
             outter_flag=False
         elif selected_idhotel-1<len(hotels):
             inner_flag=True
+            #menu for the required hotel
             while inner_flag:
                 selected_hotel=hotels[selected_idhotel-1]
+                print('Information of the hotel')
+                print('------------------------')
                 print(selected_hotel)
                 print('''\nSelect the number of the following options:
                         1) Check price with code
@@ -182,6 +185,7 @@ def select_hotel(hotels,search_city):
                         3) Get average score
                         4) Exit \n''')
                 option = input()
+                #selected option for hotel
                 if  represents_int(option)==True:
                     option=int(option)
                     if option >4:
@@ -200,9 +204,9 @@ def select_hotel(hotels,search_city):
 
 def select_hotel_city(c,country):
     '''
-    Method: gives the option to the user to select an avaiable city and to view the hotels
+    Method: gives the option to the user to select an avaiable city
     Input: the country selected , and the dictirionary of countries
-    Output: cities from the specific country
+    Output: none
     '''
     flag=True
     while flag:
@@ -221,6 +225,11 @@ def select_hotel_city(c,country):
             print('City entered not valid')
 
 def hotel_code(selected_hotel):
+    '''
+    Method: calls the hotel method, for checking the price with the discount code, print the price
+    Input: the selected hotel (Hotel object)
+    Output: none
+    '''
     print('Enter code')
     discount_code = input()
     price_with_discount,code_exist=selected_hotel._Hotel__price_discount(discount_code)
@@ -230,6 +239,11 @@ def hotel_code(selected_hotel):
         print('Price with discount would be $'+str(price_with_discount) + 'USD \n')
 
 def rate_hotel(selected_hotel):
+    '''
+    Method: Rates the hotel, throught he diffrent attributes
+    Input: the selected hotel (Hotel object)
+    Output: none
+    '''
     flag=True
     while flag:
         print('\nYou have to rate only with this numbers: 1, 2, 3, 4 or 5')
@@ -257,17 +271,13 @@ def rate_hotel(selected_hotel):
             print('Error on the input')
 
 
-
-
-
 if __name__ == "__main__":
-
+        #try:
         flag=1
         #Load the file
-        country=load_hotels(HOTELINFO_FILENAME)
+        country=load_hotels()
         #asks for the country
         c=print_select_country(country)
-        print(c.upper())
         flag=True
         while flag:
             print('------------------------------------------------------')
@@ -295,16 +305,6 @@ if __name__ == "__main__":
                     select_hotel_city(c,country)
             else:
                 print('Option not valid')
-
-
-
-
-        #search_country = (input(r))
-
-        #find hotels of city
-
-        #Display same hotels from all country with same AVG number base on the selected
-
-        #check price of hotel with codes of discount
-
-    #except: print('File not found or error occured')
+        #except:
+            #print('Unknown error')
+            #pass
